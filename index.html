@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- লিস্ট ক্যালকুলেটর — গ্রুপে যোগ দেওয়ার পাতা, সংস্করণ 1.0.0 -->
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>গ্রুপে যোগ দিন — লিস্ট ক্যালকুলেটর</title>
+<meta property="og:title" content="লিস্ট ক্যালকুলেটর — গ্রুপে যোগ দিন">
+<meta property="og:description" content="চাপলেই গ্রুপে যোগ হয়ে যাবেন — সবাই মিলে হিসাব রাখুন।">
+<style>
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F5F1EA;color:#1D2A3A;font-family:"Noto Sans Bengali",system-ui,sans-serif;padding:20px;box-sizing:border-box}
+.c{background:#fff;border:1px solid #E7E0D4;border-radius:24px;padding:26px 22px;max-width:380px;width:100%;text-align:center;box-shadow:0 8px 30px rgba(29,42,58,.08)}
+.e{font-size:54px}h1{font-size:21px;margin:8px 0 6px}p{color:#6B7280;line-height:1.6;margin:0 0 16px}
+.code{font:700 28px ui-monospace,monospace;letter-spacing:6px;padding:14px;border:2px dashed #E0A03A;border-radius:16px;background:#FBF0DC;margin:0 0 18px}
+a.b{display:block;text-decoration:none;font-weight:700;font-size:16px;padding:14px;border-radius:14px;margin-bottom:10px}
+.p{background:#1F4E79;color:#fff}.g{background:#F5F1EA;color:#1D2A3A;border:1px solid #E7E0D4}
+small{color:#9CA3AF}
+</style></head><body><div class="c">
+<div class="e">👥</div><h1>গ্রুপে যোগ দিন</h1>
+<p>"লিস্ট ক্যালকুলেটর" অ্যাপে আপনাকে একটা গ্রুপে ডাকা হয়েছে।</p>
+<div class="code" id="cd">——</div>
+<a class="b p" id="op" href="#">📱 অ্যাপে খুলুন</a>
+<a class="b g" id="ps" href="#">⬇️ অ্যাপ নেই? ডাউনলোড করুন</a>
+<small>অ্যাপ না খুললে: অ্যাপে গ্রুপ → "কোড দিয়ে যোগ দিন" → উপরের কোড লিখুন।</small>
+</div>
+<script>
+var PKG='com.jilan.listcalculator',SCH='listcalc';
+var c=(new URLSearchParams(location.search).get('c')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10);
+var play='https://play.google.com/store/apps/details?id='+PKG;
+document.getElementById('cd').textContent=c||'কোড নেই';
+document.getElementById('ps').href=play;
+var intent='intent://join?c='+c+'#Intent;scheme='+SCH+';package='+PKG+';S.browser_fallback_url='+encodeURIComponent(location.href.split('#')[0]+'#noapp')+';end';
+var op=document.getElementById('op');op.href=/android/i.test(navigator.userAgent)?intent:SCH+'://join?c='+c;
+if(c&&location.hash!=='#noapp'&&/android/i.test(navigator.userAgent))setTimeout(function(){location.href=intent;},400);
+</script></body></html>
